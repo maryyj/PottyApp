@@ -19,10 +19,12 @@ namespace PottyAppNew.Helpers
         {
             await Application.Current.MainPage.DisplayAlert(alertText, prompt, "OK");
         }
+
         public static async Task SaveToDatabase<T>(IMongoCollection<T> collection, T newObject)
         {
             await collection.InsertOneAsync(newObject);
         }
+
         public static bool RegexValidator(string pattern, string text)
         {
             Regex regex = new Regex(pattern);
