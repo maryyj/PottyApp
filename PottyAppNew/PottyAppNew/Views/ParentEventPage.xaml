@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PottyAppNew.ViewModels"
+             x:DataType="viewmodel:EventPageViewModel"
+             x:Class="PottyAppNew.Views.ParentEventPage"
+             Title="Händelser"
+             Shell.BackgroundColor="SlateGray"
+             BackgroundColor="FloralWhite">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label 
+            Text="Välj händelse"
+            FontSize="Title"
+            FontAttributes="Bold"
+            TextColor="SlateGray"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            Padding="10"/>
+            <Grid
+            RowDefinitions="50,*,10,*,50,*,*,50,*,*,50,*,*"
+            ColumnDefinitions="*,*,*,*,*">
+
+                <Label Grid.Row="1" Grid.Column="1" Text="Bajsat i pottan" HorizontalOptions="Center" TextColor="SlateGray"/>
+                <Image
+                Grid.Row="3"
+                Grid.Column="1"
+                Source="poo.png"
+                x:Name="PoopEvent"
+                HeightRequest="120">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedAddEventDescription"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Grid.Row="1" Grid.Column="3" Text="Kissat i pottan" HorizontalOptions="Center" TextColor="SlateGray"/>
+                <Image
+                Grid.Row="3"
+                Grid.Column="3"
+                Source="peeemoji.png"
+                x:Name="UrineEvent"
+                HeightRequest="120">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedAddEventDescription"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="5" Grid.Column="1" Text="Torr blöja hela natten" HorizontalOptions="Center" TextColor="SlateGray"/>
+                <Image
+                Grid.Row="6"
+                Grid.Column="1"
+                Source="moonstar.png"
+                x:Name="DryNightEvent"
+                HeightRequest="80">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedAddEventDescription"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Grid.Row="5" Grid.Column="3" Text="Olycka" HorizontalOptions="Center" TextColor="SlateGray"/>
+                <Image
+                Grid.Row="6"
+                Grid.Column="3"
+                Source="accidentsign.png"
+                x:Name="AccidentEvent"
+                HeightRequest="80">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedAddEventDescription"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Grid.Row="8" Grid.Column="1" Text="Ätit mat" HorizontalOptions="Center" TextColor="SlateGray"/>
+                <Image
+                Grid.Row="9"
+                Grid.Column="1"
+                Source="hamburger.png"
+                x:Name="EatEvent"
+                HeightRequest="80">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedAddEventDescription"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Grid.Row="8" Grid.Column="3" Text="Druckit" HorizontalOptions="Center" TextColor="SlateGray"/>
+                <Image
+                Grid.Row="9"
+                Grid.Column="3"
+                Source="drink.png"
+                x:Name="DrinkEvent"
+                HeightRequest="80">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedAddEventDescription"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <HorizontalStackLayout
+                Grid.Row="12"
+                Grid.Column="2"
+                VerticalOptions="End">
+                    <Button
+                    Text="Statistik"
+                    Clicked="OnClickedGoToStatisticPage"
+                    BackgroundColor="SlateGray"/>
+
+                    <Button
+                    Text="Tillbaka"
+                    Clicked="OnBackClicked"
+                    BackgroundColor="SlateGray"/>
+                </HorizontalStackLayout>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

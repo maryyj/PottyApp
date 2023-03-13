@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PottyAppNew.ViewModels"
+             x:DataType="viewmodel:StatisticPageViewModel"
+             x:Class="PottyAppNew.Views.StatisticPage"
+             Title="Statistik"
+             Shell.BackgroundColor="SlateGrey"
+             BackgroundColor="FloralWhite">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0">
+            <Image 
+                Source="pooandpee.png"
+                HeightRequest="200"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Border Stroke="#7D7D7D"
+                StrokeThickness="4"
+        StrokeShape="Rectangle 80,0,0,80"
+        Background="FloralWhite"
+        Padding="16,8"
+        HorizontalOptions="Center">
+                <Label Text="Gått på pottan:"
+           TextColor="SlateGrey"
+           FontSize="18"
+           FontAttributes="Bold" />
+            </Border>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <ListView 
+            x:Name="listOfStatistic"
+            ItemsSource="{Binding Events}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Label Text="{Binding EventDescription}" />
+                                    <Label Text="{Binding Date}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+        <Button
+            Grid.Row="2"
+            Text="Tillbaka"
+            Clicked="OnBackClicked"
+            BackgroundColor="SlateGray"/>
+    </Grid>
+</ContentPage>

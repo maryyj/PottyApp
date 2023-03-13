@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PottyAppNew.ViewModels"
+             x:DataType="viewmodel:SignUpPageViewModel"
+             x:Class="PottyAppNew.Views.SignUpPage"
+             Title="Registrering"
+             Shell.BackgroundColor="SlateGray"
+             BackgroundColor="FloralWhite">
+    <VerticalStackLayout>
+        <Label 
+            Text="Fyll i dina uppgifter"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            Padding="10"/>
+
+        <Frame HeightRequest="45" Margin="20,0,0,0" Padding="0" HasShadow="True" BorderColor="WhiteSmoke" HorizontalOptions="FillAndExpand">
+            <Entry Placeholder="Förnamn"
+               Text="{Binding FirstName}"/>
+        </Frame>
+
+        <Frame HeightRequest="45" Margin="20,0,0,0" Padding="0" HasShadow="True" BorderColor="WhiteSmoke" HorizontalOptions="FillAndExpand">
+            <Entry Placeholder="Efternamn"
+               Text="{Binding LastName}"/>
+        </Frame>
+
+        <Frame HeightRequest="45" Margin="20,0,0,0" Padding="0" HasShadow="True" BorderColor="WhiteSmoke" HorizontalOptions="FillAndExpand">
+            <Entry Placeholder="Telefonnummer (ex. +467XXXXXXXX)"
+                   Text="{Binding PhoneNumber}"/>
+        </Frame>
+
+        <Frame HeightRequest="45" Margin="20,0,0,0" Padding="0" HasShadow="True" BorderColor="WhiteSmoke" HorizontalOptions="FillAndExpand">
+            <Entry 
+                Placeholder="Emailadress"
+                Text="{Binding Email}"/>
+        </Frame>
+
+        <Frame HeightRequest="45" Margin="20,0,0,0" Padding="0" HasShadow="True" BorderColor="WhiteSmoke" HorizontalOptions="FillAndExpand">
+            <Entry 
+                x:Name="Password1"
+                Placeholder="Lösenord (Använd minst en versal, gemen, siffra och symbol(ex.!?#). Längd:8-64 tecken)"
+                IsPassword="True"
+                Text="{Binding Password1}"/>
+        </Frame>
+        <Frame HeightRequest="45" Margin="20,0,0,0" Padding="0" HasShadow="True" BorderColor="WhiteSmoke" HorizontalOptions="FillAndExpand">
+            <Entry
+                x:Name="Password2"
+                Placeholder="Repetera lösenordet"
+                IsPassword="True"
+                Text="{Binding Password2}"/>
+        </Frame>
+
+        <Button
+            Text="Registrera"
+            WidthRequest="100"
+            CornerRadius="20"
+            Clicked="OnClickedGoToMainPage"
+            HorizontalOptions="Center"
+            BackgroundColor="SlateGray"/>
+    </VerticalStackLayout>
+</ContentPage>

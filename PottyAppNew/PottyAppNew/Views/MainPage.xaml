@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PottyAppNew.ViewModels"
+             x:DataType="viewmodel:MainPageViewModel"
+             x:Class="PottyAppNew.MainPage"
+             Shell.NavBarIsVisible="False"
+             Shell.BackgroundColor="SlateGray"
+             BackgroundColor="FloralWhite">
+    <VerticalStackLayout
+    Spacing="25"
+    Padding="30,0"
+    VerticalOptions="Center">
+        <Button
+            Text="Startsidan utan att logga in"
+            Clicked="OnClickedGoDirectlyToHomePage"
+            BackgroundColor="SlateGray"/>
+        <Image Source="winniepotty.png" 
+               HeightRequest="150" 
+               WidthRequest="150"/>
+
+        <VerticalStackLayout Spacing="5">
+            <Label Text="Välkommen!" 
+                   FontSize="28" 
+                   TextColor="SlateGray" 
+                   HorizontalTextAlignment="Center"/>
+            <Label 
+                Text="Logga in på ditt konto" 
+                FontSize="18"
+                TextColor="SlateGray" 
+                HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" BorderColor="FloralWhite" HeightRequest="56" CornerRadius="28">
+                <Image Source="user.jpg" 
+                       HeightRequest="20"
+                       WidthRequest="20"
+                       Background="FloralWhite"/>
+            </Frame>
+            <Frame HeightRequest="45" Margin="20,0,0,0" Padding="0" HasShadow="True" BorderColor="FloralWhite" HorizontalOptions="FillAndExpand">
+                <Entry 
+                    x:Name ="emailAddress"                    
+                    Margin="20,0,0,0"
+                    VerticalOptions="Center" 
+                    Placeholder="Emailadress" 
+                    Keyboard="Email"
+                    Text="{Binding Email}"/>
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" BorderColor="FloralWhite" HeightRequest="56" CornerRadius="28">
+                <Image Source="heartlock.png"
+                       HeightRequest="20"
+                       WidthRequest="20"/>
+            </Frame>
+            <Frame HeightRequest="45" Margin="20,0,0,0" Padding="0" HasShadow="True" BorderColor="FloralWhite" HorizontalOptions="FillAndExpand">
+                <Entry x:Name="password" 
+                       Margin="20,0,0,0" 
+                       VerticalOptions="Center" 
+                       Placeholder="Lösenord" 
+                       IsPassword="True" 
+                       Keyboard="Email"
+                       Text="{Binding Password}"/>
+            </Frame>
+        </StackLayout>
+
+        <Button
+            Text="Logga in"
+            WidthRequest="100"
+            CornerRadius="20"
+            Clicked="OnClickedGoToHomePage"
+            HorizontalOptions="Center"
+            BackgroundColor="SlateGray"/>
+
+        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+            <Label Text ="Inget konto? " TextColor="Gray"/>
+            <Label Text ="Skapa ett konto här." TextColor="Blue">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSignUpLabelClicked"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

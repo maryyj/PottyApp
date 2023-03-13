@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PottyAppNew.Views.ParentPage"
+             Title="Förälder"
+             Shell.BackgroundColor="SlateGrey"
+             BackgroundColor="FloralWhite">
+    <ScrollView>
+
+        <VerticalStackLayout>
+            <Grid
+            ColumnDefinitions="*,*,*">
+                <Button 
+                Grid.Column="3"
+                Text="Lägg till ett barn"
+                Clicked="OnClickedGoToAddChildPage"
+                BackgroundColor="SlateGrey"/>
+            </Grid>
+            <Image
+                Source="pooandpee.png"
+                SemanticProperties.Description="Poo and Pee emojis holding hands"
+                HeightRequest="280"
+                HorizontalOptions="Center"/>
+            <Grid
+            RowDefinitions="*,10,*,10,*,10,*,10,*"
+            VerticalOptions="End">
+
+
+                <Button
+                Grid.Row="0"
+                 Text="Lägg till händelse"
+                 Clicked="OnClickedGoToParentEventPage"
+                 BackgroundColor="SlateGrey"/>
+                <Button
+                Grid.Row="2"
+                 Text="Statistik"
+                 Clicked="OnClickedGoStatisticPage"
+                 BackgroundColor="SlateGrey"/>
+                <Button
+                Grid.Row="4"
+                Text="Information"
+                Clicked="OnClickedGoToInfoPage"
+                BackgroundColor="SlateGrey"/>
+                <Button
+                Grid.Row="6"
+                 Text="Pappa skämt"
+                 Clicked="OnClickedGoToDadJokesPage"
+                 BackgroundColor="SlateGrey"/>
+                <Button
+            Grid.Row="8"
+            Text="Tillbaka"
+            Clicked="OnBackCklicked"
+            BackgroundColor="SlateGrey"/>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

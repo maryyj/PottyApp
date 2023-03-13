@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PottyAppNew.ViewModels"
+             x:DataType="viewmodel:DadJokesViewModel"
+             x:Class="PottyAppNew.Views.DadJokesPage"
+             Title="Pappaskämt"
+             Shell.BackgroundColor="SlateGray"
+             BackgroundColor="FloralWhite">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Image 
+                Source="manlaughing.png"
+                HeightRequest="200"/>
+            <Grid
+                RowDefinitions="100,*,*,50,*,*,70,*,*">
+
+                <Label
+                Grid.Row="1"
+                x:Name="textSwe"
+                HorizontalOptions="Center"
+                TextColor="SlateGray"
+                FontAttributes="Italic"/>
+                <Label 
+                Grid.Row="2"
+                x:Name="dadJokeSwe"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontSize="22"
+                FontAttributes="Bold"
+                TextColor="SlateGray"/>
+
+                <Label
+                Grid.Row="4"
+                x:Name="textEng"
+                HorizontalOptions="Center"
+                TextColor="SlateGray"
+                FontAttributes="Italic"/>
+
+                <Label 
+                Grid.Row="5"
+                x:Name="dadJokeEng"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontSize="22"
+                FontAttributes="Bold"
+                TextColor="SlateGray"/>
+
+                <Button
+                Grid.Row="7"
+                Text="Hämta ett pappaskämt"
+                Clicked="OnClickedGetDadJoke"
+                BackgroundColor="SlateGray"
+                VerticalOptions="End"
+                HorizontalOptions="Center"/>
+                <Button
+                    Grid.Row="8"
+                    Text="Tillbaka"
+                    Clicked="OnBackClicked"
+                    BackgroundColor="SlateGray"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

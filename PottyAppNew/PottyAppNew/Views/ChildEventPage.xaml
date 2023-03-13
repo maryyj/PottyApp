@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:PottyAppNew.Models"
+             x:DataType="model:Child"
+             x:Class="PottyAppNew.Views.ChildEventPage"
+             Title="Händelser"
+             Shell.BackgroundColor="SlateGrey"
+             BackgroundColor="FloralWhite">
+    <ScrollView>
+
+        <VerticalStackLayout>
+            <Label 
+            Text="Välj händelse"
+            FontSize="Title"
+            FontAttributes="Bold"
+            TextColor="SlateGrey"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            Padding="10"/>
+            <Grid
+            RowDefinitions="100,*,*,100,*"
+            ColumnDefinitions="*,*,*,*,*">
+
+                <Label Grid.Row="1" Grid.Column="1" Text="Bajsat i pottan" HorizontalOptions="Center" TextColor="SlateGrey"/>
+                <Image
+                Grid.Row="2"
+                Grid.Column="1"
+                Source="poo.png"
+                x:Name="PoopEvent"
+                HeightRequest="150">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedAddEventDescription"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Grid.Row="1" Grid.Column="3" Text="Kissat i pottan" HorizontalOptions="Center" TextColor="SlateGrey"/>
+                <Image
+                Grid.Row="2"
+                Grid.Column="3"
+                Source="peeemoji.png"
+                x:Name="UrineEvent"
+                HeightRequest="150">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedAddEventDescription"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <StackLayout
+            Grid.Row="4"
+            x:Name="stackLayout" 
+            Orientation="Horizontal"
+            HeightRequest="50">
+                    <Label Text="{Binding Points}" FontSize="Small"/>
+                </StackLayout>
+            </Grid>
+            <HorizontalStackLayout
+            HorizontalOptions="Center">
+                <Button
+                Text="Statistik"
+                Clicked="OnClickedGoToStatisticPage"
+                BackgroundColor="SlateGrey"/>
+                <Button
+                Text="Tillbaka"
+                Clicked="OnBackClicked"
+                BackgroundColor="SlateGrey"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

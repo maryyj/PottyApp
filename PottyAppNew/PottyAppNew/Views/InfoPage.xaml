@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PottyAppNew.Views.InfoPage"
+             Title="Information"
+             Shell.BackgroundColor="SlateGrey"
+             BackgroundColor="FloralWhite">
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <Grid
+                RowDefinitions="10,*">
+                <Image 
+                    Grid.Row="1"
+                    Source="childonpotty.jpg"
+                   HeightRequest="200"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            </Grid>
+
+            <Grid
+                RowDefinitions="50,*,65,*,10,*,10,*,10,*">
+                <Border
+                    Grid.Row="1"
+                    Stroke="#7D7D7D"
+                    StrokeThickness="8"
+                    StrokeShape="Rectangle 80,0,0,80"
+                    Background="FloralWhite"
+                    Padding="16,8"
+                    HorizontalOptions="Center">
+                    <Label Text="Länkar om potträning:"
+                        TextColor="SlateGrey"
+                        FontSize="18"
+                        FontAttributes="Bold" />
+                </Border>
+                <Button
+                    Grid.Row="3"
+                    Text="Steg-för-steg Pampers"
+                    Clicked="OnClickedGoToPampersWeb"
+                    BackgroundColor="SlateGrey"
+                    FontAttributes="Bold"/>
+                <Button
+                    Grid.Row="5"
+                    Text="1177"
+                    Clicked="OnClickedGoTo1177Web"
+                    BackgroundColor="SlateGrey"
+                    FontAttributes="Bold"/>
+                <Button
+                    Grid.Row="7"
+                    Text="Rulla vagn"
+                    Clicked="OnClickedGoToRullaVagnWeb"
+                    BackgroundColor="SlateGrey"
+                    FontAttributes="Bold"/>
+                <Button
+                    Grid.Row="9"
+                    Text="Tillbaka"
+                    Clicked="OnBackClicked"
+                    BackgroundColor="SlateGrey"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

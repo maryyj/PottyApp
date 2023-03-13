@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maui="clr-namespace:Microsoft.Maui.Controls;assembly=Microsoft.Maui.Controls"
+             x:Class="PottyAppNew.Views.GamePage"
+             Title="Spel"
+             Shell.BackgroundColor="SlateGray"
+             BackgroundColor="FloralWhite">
+    <VerticalStackLayout>
+        <Label
+               Grid.Row="1"
+               Text="Snart kommer ett coolt spel..."
+               TextColor="SlateGrey"
+               FontSize="20"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"/>
+        <Button
+                Grid.Row="3"
+               Text="Tillbaka"
+                Clicked="OnBackClicked"
+                BackgroundColor="SlateGray"/>
+    </VerticalStackLayout>
+</ContentPage>
