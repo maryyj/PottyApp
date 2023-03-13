@@ -20,23 +20,28 @@
                 HeightRequest="200"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
-            <Border Stroke="#7D7D7D"
+
+            <Border
+                Grid.Row="1"
+                Grid.Column="0"
+                Stroke="#7D7D7D"
                 StrokeThickness="4"
-        StrokeShape="Rectangle 80,0,0,80"
-        Background="FloralWhite"
-        Padding="16,8"
-        HorizontalOptions="Center">
-                <Label Text="Gått på pottan:"
-           TextColor="SlateGrey"
-           FontSize="18"
-           FontAttributes="Bold" />
-            </Border>
+                StrokeShape="Rectangle 80,0,0,80"
+                Background="FloralWhite"
+                Padding="16,8"
+                HorizontalOptions="CenterAndExpand">
+                <Label 
+                    Text="Tips! Om barnet haft torr blöja tre nätter i rad, prova att ta bort blöjan helt."
+                    TextColor="SlateGrey"
+                    FontSize="16"
+                    FontAttributes="Bold" />
+                </Border>
         </StackLayout>
         <ScrollView Grid.Row="1">
-            <StackLayout>
-                <ListView 
-            x:Name="listOfStatistic"
-            ItemsSource="{Binding Events}">
+            <HorizontalStackLayout>
+                <ListView
+                    x:Name="listOfStatisticPotty"
+                    ItemsSource="{Binding Events}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -48,7 +53,35 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </StackLayout>
+                <ListView
+                    x:Name="listOfStatisticAccident"
+                    ItemsSource="{Binding Events}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Label Text="{Binding EventDescription}" />
+                                    <Label Text="{Binding Date}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ListView
+                    x:Name="listOfStatisticDryDiaper"
+                    ItemsSource="{Binding Events}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Label Text="{Binding EventDescription}" />
+                                    <Label Text="{Binding Date}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </HorizontalStackLayout>
         </ScrollView>
         <Button
             Grid.Row="2"

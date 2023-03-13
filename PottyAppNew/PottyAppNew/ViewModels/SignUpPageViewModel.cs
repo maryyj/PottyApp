@@ -13,7 +13,6 @@ using PottyAppNew.Contracts;
 
 namespace PottyAppNew.ViewModels
 {
-    //TODO Refaktorera.
     internal partial class SignUpPageViewModel : ObservableObject
     {
         ISignUpFacade _signUpFacade = new SignUpFacade();

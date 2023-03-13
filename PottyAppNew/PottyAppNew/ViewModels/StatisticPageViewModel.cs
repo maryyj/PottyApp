@@ -21,7 +21,6 @@ namespace PottyAppNew.ViewModels
         //Statistik för att gå på potta, torr hela natten, olycka
         //Torr hela natten >3 ggr i rad, tips om att prova utan blöja.
 
-
         private static IMongoCollection<Event> EventCollection;
 
         [ObservableProperty]
@@ -36,16 +35,31 @@ namespace PottyAppNew.ViewModels
         public StatisticPageViewModel()
         {
             Events = new ObservableCollection<Event>();
+            EventCollection = DataAccessLayer.GetDbCollection<Event>("EventCollection").Result;
         }
 
-        public async static Task<ObservableCollection<Event>> GetStatistic(Child child)
+        public async static Task<ObservableCollection<Event>> GetStatisticTwoEvent(Child child, string description1, string description2)
         {
-            EventCollection = await DataAccessLayer.GetDbCollection<Event>("EventCollection");
 
             var filter = Builders<Event>.Filter.And(
                          Builders<Event>.Filter.Eq(e => e.ChildId, child.Id),
-                         Builders<Event>.Filter.In(e => e.EventDescription, new[] { "Bajsat i pottan", "Kissat i pottan" })
+                         Builders<Event>.Filter.In(e => e.EventDescription, new[] {description1, description2})
                          );
+            var sort = Builders<Event>.Sort.Ascending(e => e.Date);
+
+            var eventList = await EventCollection.Find(filter).Sort(sort).ToListAsync();
+            var viewModel = new StatisticPageViewModel();
+            viewModel.Events = new ObservableCollection<Event>(eventList);
+
+            return viewModel.Events;
+        }
+        public async static Task<ObservableCollection<Event>> GetStatistic(Child child, string description)
+        {
+
+            var filter = Builders<Event>.Filter.And(
+                         Builders<Event>.Filter.Eq(e => e.ChildId, child.Id),
+                         Builders<Event>.Filter.Eq(e => e.EventDescription, description));
+
             var sort = Builders<Event>.Sort.Ascending(e => e.Date);
 
             var eventList = await EventCollection.Find(filter).Sort(sort).ToListAsync();

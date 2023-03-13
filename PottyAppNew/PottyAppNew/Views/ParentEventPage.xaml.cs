@@ -25,7 +25,7 @@ public partial class ParentEventPage : ContentPage
         else if (sender == DryNightEvent) eventPageViewModel.EventDescription = "Torr blöja hela natten";
         else if (sender == AccidentEvent) eventPageViewModel.EventDescription = "Olycka: Kissat/bajsat på sig";
 
-        // Lägger till event i databasen, skickar med datum, beskrivning och ett Id på barnet
+        // Lägger till event i databasen, skickar med datum, beskrivning och ett Barn
         bool isSavedInDb = await eventPageViewModel.AddEventToDatabase(date, eventPageViewModel.EventDescription, App.Child);
 
         if (isSavedInDb) _myAlertDelegate("Sparad", "Händelsen är sparad");

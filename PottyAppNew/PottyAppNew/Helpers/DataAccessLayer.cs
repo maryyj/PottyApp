@@ -11,7 +11,6 @@ namespace PottyAppNew.Helpers
     {
         public static async Task<IMongoCollection<T>> GetDbCollection<T>(string collectionName)
         {
-            
             var settings = MongoClientSettings.FromConnectionString("Connection-String");
             settings.ServerApi = new ServerApi(ServerApiVersion.V1);
             var client = new MongoClient(settings);

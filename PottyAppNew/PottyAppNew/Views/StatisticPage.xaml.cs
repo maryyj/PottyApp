@@ -15,10 +15,17 @@ public partial class StatisticPage : ContentPage
     }
     protected override async void OnAppearing()
     {
+        string peePotty = "Kissat i pottan";
+        string poopPotty = "Bajsat i pottan";
+        string accident = "Olycka: Kissat/bajsat på sig";
+        string dryDiaper = "Torr blöja hela natten";
         base.OnAppearing();
-        listOfStatistic.ItemsSource = await StatisticPageViewModel.GetStatistic(App.Child);
+        listOfStatisticPotty.ItemsSource = await StatisticPageViewModel.GetStatisticTwoEvent(App.Child, peePotty, poopPotty);
+        listOfStatisticAccident.ItemsSource = await StatisticPageViewModel.GetStatistic(App.Child,accident);
+        listOfStatisticDryDiaper.ItemsSource = await StatisticPageViewModel.GetStatistic(App.Child,dryDiaper);
 
     }
+
     private async void OnBackClicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();

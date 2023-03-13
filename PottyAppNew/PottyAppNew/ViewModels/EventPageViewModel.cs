@@ -17,8 +17,8 @@ namespace PottyAppNew.ViewModels
     {
         private static IMongoCollection<Event> EventCollection;
         private static IMongoCollection<Child> ChildCollection;
-        private Delegates.MyDelegate _myAlertDelegate;
-        private Delegates.MyDelegateCollection<Event> _delCollection;
+        private Delegates.MyDelegate _alertDelegate;
+        private Delegates.MyDelegateCollection<Event> _saveDelegate;
 
         [ObservableProperty]
         DateTime date;
@@ -30,16 +30,13 @@ namespace PottyAppNew.ViewModels
         Guid parentId;
         public EventPageViewModel()
         {
-            _myAlertDelegate = Delegates.DisplayAlerts;
-            _delCollection = Delegates.SaveToDatabase;
+            _alertDelegate = Delegates.DisplayAlerts;
+            _saveDelegate = Delegates.SaveToDatabase;
             EventCollection = DataAccessLayer.GetDbCollection<Event>("EventCollection").Result;
             ChildCollection = DataAccessLayer.GetDbCollection<Child>("ChildCollection").Result;
         }
         public async Task<bool> AddEventToDatabase(DateTime date, string EventDescription, Child child)
         {
-
-            //EventCollection = await Helpers.DataAccessLayer.GetDbCollection<Event>("EventCollection");
-            //ChildCollection = await Helpers.DataAccessLayer.GetDbCollection<Child>("ChildCollection");
 
             if (child != null)
             {
@@ -62,12 +59,12 @@ namespace PottyAppNew.ViewModels
                     await ChildCollection.UpdateOneAsync(filter, update); //uppdaterar databasen.
                     App.Child.Points = pointsToAdd;
                 }
-                await _delCollection(EventCollection, newEvent);
+                await _saveDelegate(EventCollection, newEvent);
                 return true;
             }
             else
             {
-                _myAlertDelegate("Error", "Barnet existerar inte i databasen.");
+                _alertDelegate("Error", "Barnet existerar inte i databasen.");
                 return false;
             }
         }
