@@ -25,6 +25,7 @@ namespace PottyAppNew.Helpers
             await collection.InsertOneAsync(newObject);
         }
 
+        //används till barnets ålder och namn
         public static bool RegexValidator(string pattern, string text)
         {
             Regex regex = new Regex(pattern);

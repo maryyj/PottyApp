@@ -17,9 +17,7 @@ namespace PottyAppNew.ViewModels
 {
     internal partial class StatisticPageViewModel : ObservableObject
     {
-        //TODO: Visa barnets poäng,
-        //Statistik för att gå på potta, torr hela natten, olycka
-        //Torr hela natten >3 ggr i rad, tips om att prova utan blöja.
+        //TODO: Visa barnets poäng
 
         private static IMongoCollection<Event> EventCollection;
 
@@ -38,13 +36,13 @@ namespace PottyAppNew.ViewModels
             EventCollection = DataAccessLayer.GetDbCollection<Event>("EventCollection").Result;
         }
 
-        public async static Task<ObservableCollection<Event>> GetStatisticTwoEvent(Child child, string description1, string description2)
+        public async static Task<ObservableCollection<Event>> GetStatistic(Child child, string description)
         {
 
             var filter = Builders<Event>.Filter.And(
                          Builders<Event>.Filter.Eq(e => e.ChildId, child.Id),
-                         Builders<Event>.Filter.In(e => e.EventDescription, new[] {description1, description2})
-                         );
+                         Builders<Event>.Filter.Eq(e => e.EventDescription, description));
+
             var sort = Builders<Event>.Sort.Ascending(e => e.Date);
 
             var eventList = await EventCollection.Find(filter).Sort(sort).ToListAsync();
@@ -53,13 +51,13 @@ namespace PottyAppNew.ViewModels
 
             return viewModel.Events;
         }
-        public async static Task<ObservableCollection<Event>> GetStatistic(Child child, string description)
+        public async static Task<ObservableCollection<Event>> GetStatisticTwoEvent(Child child, string description1, string description2)
         {
 
             var filter = Builders<Event>.Filter.And(
                          Builders<Event>.Filter.Eq(e => e.ChildId, child.Id),
-                         Builders<Event>.Filter.Eq(e => e.EventDescription, description));
-
+                         Builders<Event>.Filter.In(e => e.EventDescription, new[] {description1, description2})
+                         );
             var sort = Builders<Event>.Sort.Ascending(e => e.Date);
 
             var eventList = await EventCollection.Find(filter).Sort(sort).ToListAsync();

@@ -31,11 +31,6 @@ namespace PottyAppNew.Components
 
         public bool validatePassword(string password1, string password2)
         {
-            if (password1.Length < 8 || password1.Length > 64)
-            {
-                return false;
-            }
-
             if (!Regex.IsMatch(password1, @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*?[#?!@$%^&*-]).{8,64}$"))
             {
                 return false;
