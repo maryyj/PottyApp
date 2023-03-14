@@ -7,7 +7,7 @@ using PottyAppNew.Components;
 using PottyAppNew.Contracts;
 using PottyAppNew.Models;
 
-namespace PottyAppNew.Helpers
+namespace PottyAppNew.ApplicationFacade
 {
     class SignUpFacade : ISignUpFacade
     {

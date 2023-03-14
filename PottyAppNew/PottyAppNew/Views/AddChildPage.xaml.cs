@@ -35,4 +35,9 @@ public partial class AddChildPage : ContentPage
             listOfChildren.SelectedItem = null;
         }
     }
+
+    private async void OnBackClicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
 }

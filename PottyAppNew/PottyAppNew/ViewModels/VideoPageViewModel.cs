@@ -28,7 +28,7 @@ namespace PottyAppNew.ViewModels
                 //Sätter MediaElement Source till videons stream URL
                 mediaElement.Source = streamInfo.Url;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 await Console.Out.WriteLineAsync("Videon är inte tillgänglig");
             }

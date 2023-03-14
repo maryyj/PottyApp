@@ -20,6 +20,7 @@ namespace PottyAppNew.ViewModels
         private static readonly string apiKeyChatGPT = "API-KEY";
         
 
+
         public async Task<List<DadJoke>> GetJokesAsync(string uri)
         {
             HttpClient client = new HttpClient();

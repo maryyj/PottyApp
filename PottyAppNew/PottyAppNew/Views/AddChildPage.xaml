@@ -4,7 +4,7 @@
              xmlns:viewmodel="clr-namespace:PottyAppNew.ViewModels"
              x:DataType="viewmodel:AddChildPageViewModel"
              x:Class="PottyAppNew.Views.AddChildPage"
-             Title="AddChildPage"
+             Title="Lägg till barn"
              Shell.BackgroundColor="SlateGrey"
              BackgroundColor="FloralWhite">
     <VerticalStackLayout>
@@ -44,7 +44,8 @@
                             Padding="10"
                             RowDefinitions="Auto, *"
                             ColumnDefinitions="350,Auto,Auto,Auto,Auto"
-                            ColumnSpacing="20">
+                            ColumnSpacing="20"
+                            HorizontalOptions="FillAndExpand">
                             <Label 
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -72,6 +73,10 @@
         <Image 
             Source="pooandpee.png"
             HorizontalOptions="Center"
-            HeightRequest="150"/>
+            HeightRequest="200"/>
+        <Button
+            Text="Tillbaka"
+            Clicked="OnBackClicked"
+            BackgroundColor="SlateGrey"/>
     </VerticalStackLayout>
 </ContentPage>
