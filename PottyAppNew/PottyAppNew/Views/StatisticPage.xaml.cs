@@ -23,9 +23,7 @@ public partial class StatisticPage : ContentPage
         listOfStatisticPotty.ItemsSource = await StatisticPageViewModel.GetStatisticTwoEvent(App.Child, peePotty, poopPotty);
         listOfStatisticAccident.ItemsSource = await StatisticPageViewModel.GetStatistic(App.Child,accident);
         listOfStatisticDryDiaper.ItemsSource = await StatisticPageViewModel.GetStatistic(App.Child,dryDiaper);
-
     }
-
     private async void OnBackClicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();

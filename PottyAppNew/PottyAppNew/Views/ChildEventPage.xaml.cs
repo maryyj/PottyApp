@@ -2,6 +2,7 @@ using PottyAppNew.ViewModels;
 using MongoDB.Bson;
 using PottyAppNew.Helpers;
 using Microsoft.Maui;
+using Plugin.Maui.Audio;
 //using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PottyAppNew.Views;
@@ -9,20 +10,21 @@ namespace PottyAppNew.Views;
 public partial class ChildEventPage : ContentPage
 {
     private Delegates.MyDelegate _alertDelegate;
-
+    private readonly IAudioManager _audioManager; //Inbyggd Interface i audiomanager
     EventPageViewModel eventPageViewModel = new EventPageViewModel();
     public ChildEventPage()
     {
         InitializeComponent();
         BindingContext = eventPageViewModel;
         _alertDelegate = Delegates.DisplayAlerts;
+        this._audioManager = new AudioManager(); //Gör att man kan använda audiomanager utanför konstruktor.
     }
     protected override void OnAppearing()
     {
         base.OnAppearing();
         GetGoldenStars();
     }
-    private async void GetGoldenStars()
+    private void GetGoldenStars()
     {
         if (App.Child != null)
         {
@@ -45,23 +47,29 @@ public partial class ChildEventPage : ContentPage
     private async void OnClickedAddEventDescription(object sender, EventArgs e)
     {
         DateTime date = DateTime.Now.AddHours(1);
+        string poopPotty = "Bajsat i pottan";
+        string peePotty = "Kissat i pottan";
 
         if (sender == PoopEvent)
         {
-            eventPageViewModel.EventDescription = "Bajsat i pottan";
+            eventPageViewModel.EventDescription = poopPotty;
         }
         else if (sender == UrineEvent)
         {
-            eventPageViewModel.EventDescription = "Kissat i pottan";
+            eventPageViewModel.EventDescription = peePotty;
         }
-
+        //Lägger till händelsen i databasen
         bool isSavedInDb = await eventPageViewModel.AddEventToDatabase(date, eventPageViewModel.EventDescription, App.Child);
 
         if (isSavedInDb)
         {
+            //lägger till en stjärna direkt på sidan.
             Image pointImage = new Image();
             pointImage.Source = "star.png";
             stackLayout.Children.Add(pointImage);
+
+            var player = _audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("fart.mp3"));
+            player.Play();
 
             _alertDelegate("Sparad", "Händelsen är sparad");
         }

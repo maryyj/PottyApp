@@ -8,6 +8,7 @@ using PottyAppNew.Models;
 using System.Text.Json;
 using MongoDB.Bson;
 using Newtonsoft.Json;
+using PottyAppNew.Helpers;
 using static PottyAppNew.Models.ChatGptApi;
 
 namespace PottyAppNew.ViewModels
@@ -17,9 +18,9 @@ namespace PottyAppNew.ViewModels
         private static string baseAddress = "https://api.api-ninjas.com";
         private static readonly string apiKeyNinja = "API-KEY";
         private static readonly string apiKeyChatGPT = "API-KEY";
-       
+        
 
-        public static async Task<List<DadJoke>> GetJokesAsync(string uri)
+        public async Task<List<DadJoke>> GetJokesAsync(string uri)
         {
             HttpClient client = new HttpClient();
             List<DadJoke> jokes = null;
@@ -33,22 +34,22 @@ namespace PottyAppNew.ViewModels
                     string responseString = await response.Content.ReadAsStringAsync();
                     jokes = JsonConvert.DeserializeObject<List<DadJoke>>(responseString);
                 }
+                return jokes;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Debug.WriteLine(e.Message);
-                throw;
+                return null;
             }
-            return jokes;
+
         }
-        public static async Task<string> ChatTranslate(string question)
+        public async Task<string> ChatTranslate(string question)
         {
             string answer = "Inget svar";
 
             CompletionRequest request = new CompletionRequest()  //skapat completionrequest objekt som skickas till chatGPT
             {
                 Model = "text-davinci-003",
-                Prompt = "Översätt texten till svenska: " + question,
+                Prompt = "Översätt engelska skämtet till svenska: " + question,
                 MaxTokens = 120
             };
 
@@ -76,22 +77,19 @@ namespace PottyAppNew.ViewModels
                         completionResponse = System.Text.Json.JsonSerializer.Deserialize<CompletionResponse>(responseString);
                     }
                 }
+
                 if (completionResponse != null)
                 {
                     answer = completionResponse.Choices[0].Text;
                 }
-                else
-                {
-                    await Console.Out.WriteLineAsync("Inget svar");
-                }
             }
-            catch (Exception e)
+
+            catch
             {
-                await Console.Out.WriteLineAsync("Gick inte att översätta");
+                return null;
             }
 
             return answer;
-
         }
     }
 }

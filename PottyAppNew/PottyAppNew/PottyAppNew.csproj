@@ -61,6 +61,7 @@
 	  <None Remove="Resources\Images\star.png" />
 	  <None Remove="Resources\Images\user.jpg" />
 	  <None Remove="Resources\Images\winniepotty.png" />
+	  <None Remove="Resources\Raw\fart.mp3" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -69,6 +70,7 @@
 		<PackageReference Include="Google.Apis.YouTube.v3" Version="1.60.0.2945" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="MongoDB.Driver" Version="2.19.0" />
+		<PackageReference Include="Plugin.Maui.Audio" Version="1.0.0" />
 		<PackageReference Include="YoutubeExplode" Version="6.2.9" />
 		<PackageReference Include="YoutubeExplode.Converter" Version="6.2.9" />
 	</ItemGroup>

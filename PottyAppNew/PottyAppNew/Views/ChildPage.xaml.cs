@@ -1,10 +1,11 @@
+using Plugin.Maui.Audio;
 using PottyAppNew.Helpers;
 
 namespace PottyAppNew.Views;
 
 public partial class ChildPage : ContentPage
 {
-    private Delegates.MyDelegate _alertDelegate;
+    private readonly Delegates.MyDelegate _alertDelegate;
     public ChildPage()
     {
         InitializeComponent();
