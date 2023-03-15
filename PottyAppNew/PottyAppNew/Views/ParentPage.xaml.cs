@@ -4,7 +4,7 @@ namespace PottyAppNew.Views;
 
 public partial class ParentPage : ContentPage
 {
-    private Delegates.MyDelegate _alertDelegate;
+    private readonly Delegates.MyDelegate _alertDelegate;
     public ParentPage()
     {
         InitializeComponent();
@@ -22,7 +22,7 @@ public partial class ParentPage : ContentPage
         }
         else
         {
-            _alertDelegate("Error", "Du måste vara inloggad/lägga till ett barn för att lägga till en händelse.");
+            _alertDelegate("Felmeddelande", "Du måste vara inloggad/lägga till ett barn för att lägga till en händelse.");
         }
     }
     private async void OnClickedGoStatisticPage(object sender, EventArgs e)

@@ -5,7 +5,7 @@ namespace PottyAppNew.Views;
 
 public partial class VideoPage : ContentPage
 {
-    VideoPageViewModel viewModel = new VideoPageViewModel();
+    readonly VideoPageViewModel viewModel = new();
     private readonly Delegates.MyDelegate _alertDelegate;
     public VideoPage()
     {
@@ -33,7 +33,7 @@ public partial class VideoPage : ContentPage
         }
         catch
         {
-            _alertDelegate("Error", "Videon gick inte att hämta, försök igen senare.");
+            _alertDelegate("Felmeddelande", "Videon gick inte att hämta, försök igen senare.");
         }
 
     }

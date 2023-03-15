@@ -28,17 +28,15 @@ namespace PottyAppNew.Helpers
         //används till barnets ålder och namn
         public static bool RegexValidator(string pattern, string text)
         {
-            Regex regex = new Regex(pattern);
+            Regex regex = new(pattern);
 
             MatchCollection matches = regex.Matches(text);
 
-            if (matches.Any())
+            if (matches.Count > 0)
             {
-                foreach (Match match in matches)
-                {
-                    return true;
-                }
+                return true;
             }
+
             return false;
         }
     }

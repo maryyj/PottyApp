@@ -1,7 +1,9 @@
+using PottyAppNew.ViewModels;
 namespace PottyAppNew.Views;
 
 public partial class HomePage : ContentPage
 {
+    readonly AddChildPageViewModel addChildPageViewModel = new();
 	public HomePage()
 	{
 		InitializeComponent();
@@ -20,6 +22,7 @@ public partial class HomePage : ContentPage
     {
         App.LoggedInParent = null;
         App.Child = null;
+        addChildPageViewModel.ChildList.Clear();
         await Navigation.PopAsync();
     }
 }

@@ -21,7 +21,7 @@ public partial class ChildPage : ContentPage
         }
         else
         {
-            _alertDelegate("Error", "Du måste vara inloggad för att lägga till ett barn");
+            _alertDelegate("Felmeddelande", "Du måste vara inloggad för att lägga till ett barn");
         }
     }
     private async void OnClickedGoToVideoPage(object sender, EventArgs e)
@@ -43,7 +43,7 @@ public partial class ChildPage : ContentPage
         }
         else
         {
-            _alertDelegate("Error", "Du måste vara inloggad/lägga till ett barn för att kunna lägga till en händelse.");
+            _alertDelegate("Felmeddelande", "Du måste vara inloggad/lägga till ett barn för att kunna lägga till en händelse.");
         }
 
     }

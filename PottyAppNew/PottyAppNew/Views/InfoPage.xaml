@@ -55,7 +55,8 @@
                     Grid.Row="9"
                     Text="Tillbaka"
                     Clicked="OnBackClicked"
-                    BackgroundColor="SlateGrey"/>
+                    BackgroundColor="SlateGrey"
+                    FontAttributes="Bold"/>
             </Grid>
         </VerticalStackLayout>
     </ScrollView>

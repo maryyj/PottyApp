@@ -17,8 +17,7 @@ namespace PottyAppNew.ViewModels
     {
         private static IMongoCollection<Event> EventCollection;
         private static IMongoCollection<Child> ChildCollection;
-        private Delegates.MyDelegate _alertDelegate;
-        private Delegates.MyDelegateCollection<Event> _saveDelegate;
+        private readonly Delegates.MyDelegateCollection<Event> _saveDelegate;
 
         [ObservableProperty]
         int points;
@@ -32,10 +31,9 @@ namespace PottyAppNew.ViewModels
         Guid parentId;
         public EventPageViewModel()
         {
-            _alertDelegate = Delegates.DisplayAlerts;
-            _saveDelegate = Delegates.SaveToDatabase;
             EventCollection = DataAccessLayer.GetDbCollection<Event>("EventCollection").Result;
             ChildCollection = DataAccessLayer.GetDbCollection<Child>("ChildCollection").Result;
+            _saveDelegate = Delegates.SaveToDatabase;
         }
         public async Task<bool> AddEventToDatabase(DateTime date, string EventDescription, Child child)
         {
@@ -43,7 +41,7 @@ namespace PottyAppNew.ViewModels
             if (child != null)
             {
 
-                Event newEvent = new Event
+                Event newEvent = new()
                 {
                     Date = date,
                     EventDescription = EventDescription,
@@ -66,7 +64,6 @@ namespace PottyAppNew.ViewModels
             }
             else
             {
-                _alertDelegate("Error", "Barnet existerar inte i databasen.");
                 return false;
             }
         }

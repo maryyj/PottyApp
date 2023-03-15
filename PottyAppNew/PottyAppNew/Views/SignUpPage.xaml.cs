@@ -4,8 +4,8 @@ namespace PottyAppNew.Views;
 
 public partial class SignUpPage : ContentPage
 {
-    ViewModels.SignUpPageViewModel signUpPage = new();
-    private Delegates.MyDelegate _alertDelegate;
+    readonly ViewModels.SignUpPageViewModel signUpPage = new();
+    private readonly Delegates.MyDelegate _alertDelegate;
     public SignUpPage()
     {
         InitializeComponent();
@@ -20,6 +20,10 @@ public partial class SignUpPage : ContentPage
         {
             _alertDelegate("Grattis", "Du är nu registrerad, vänligen logga in.");
             await Navigation.PushAsync(new MainPage());
+        }
+        else
+        {
+            _alertDelegate("Felmeddelande", "Fel inmatning, försök igen.");
         }
     }
 }

@@ -5,16 +5,21 @@ namespace PottyAppNew.Views;
 
 public partial class AddChildPage : ContentPage
 {
-    AddChildPageViewModel addChildPageViewModel = new();
-    private Delegates.MyDelegate _alertDelegate;
+    readonly AddChildPageViewModel addChildPageViewModel = new();
+    private readonly Delegates.MyDelegate _alertDelegate;
     public AddChildPage()
     {
         InitializeComponent();
-        BindingContext = addChildPageViewModel;
         _alertDelegate = Delegates.DisplayAlerts;
-        addChildPageViewModel.GetChildren();
+        BindingContext = addChildPageViewModel;
     }
-    private async void OnClickedSaveChild(object sender, EventArgs e)
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        addChildPageViewModel.GetChildren();
+        addChildPageViewModel.ChildList.Clear();
+    }
+        private async void OnClickedSaveChild(object sender, EventArgs e)
     {
         bool success = await addChildPageViewModel.AddChildToDatabase();
         if (success)

@@ -6,8 +6,8 @@ namespace PottyAppNew;
 
 public partial class MainPage : ContentPage
 {
-    MainPageViewModel mainPageViewModel = new MainPageViewModel();
-    private Delegates.MyDelegate _alertDelegate;
+    readonly MainPageViewModel mainPageViewModel = new();
+    private readonly Delegates.MyDelegate _alertDelegate;
     public MainPage()
     {
         InitializeComponent();

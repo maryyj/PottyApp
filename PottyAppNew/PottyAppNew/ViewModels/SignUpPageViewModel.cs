@@ -16,10 +16,10 @@ namespace PottyAppNew.ViewModels
 {
     internal partial class SignUpPageViewModel : ObservableObject
     {
-        ISignUpFacade _signUpFacade = new SignUpFacade();
+        readonly ISignUpFacade _signUpFacade = new SignUpFacade();
         private static IMongoCollection<Parent> ParentCollection;
-        private Delegates.MyDelegate _alertDelegate;
-        private Delegates.MyDelegateCollection<Parent> _saveDelegate;
+        private readonly Delegates.MyDelegate _alertDelegate;
+        private readonly Delegates.MyDelegateCollection<Parent> _saveDelegate;
 
         [ObservableProperty]
         Guid id;
@@ -45,26 +45,32 @@ namespace PottyAppNew.ViewModels
         {
             //Kollar om den inmatade emailadressen redan finns i databasen.
             var emailfilter = Builders<Parent>.Filter.Eq(p => p.Email, Email);
-            var existingParentEmail = await ParentCollection.Find(emailfilter).FirstOrDefaultAsync();
+            var existingParent = await ParentCollection.Find(emailfilter).FirstOrDefaultAsync();
 
-            if (existingParentEmail != null)
+            if (existingParent != null)
             {
-                _alertDelegate("Error", "Emailadressen finns redan.");
+                _alertDelegate("Felmeddelande", "Emailadressen finns redan.");
                 return false;
             }
 
-            var parentObject = _signUpFacade.ValidateAndCreateParent(FirstName, LastName, PhoneNumber, Email, Password1, Password2);
-            if (parentObject != null)
+            if (FirstName != null || LastName != null || PhoneNumber != null || Email != null || Password1 != null || Password2 != null)
             {
-                await _saveDelegate(ParentCollection, parentObject);
-                return true;
+                Parent parentObject = _signUpFacade.ValidateAndCreateParent(FirstName, LastName, PhoneNumber, Email, Password1, Password2);
+                if (parentObject != null)
+                {
+                    await _saveDelegate(ParentCollection, parentObject);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                _alertDelegate("Error", "Fel inmatning");
                 return false;
             }
-        }    
+        }
         //public async Task<bool> AddParentToDatabase()
         //{
 

@@ -7,7 +7,7 @@ namespace PottyAppNew.Views;
 public partial class DadJokesPage : ContentPage
 {
     //TODO: Översätt joke till svenska med hjälp av chat gpt api.
-    DadJokesViewModel dadJokesViewModel = new();
+    readonly DadJokesViewModel dadJokesViewModel = new();
     private readonly Delegates.MyDelegate _alertDelegate;
     public DadJokesPage()
     {
@@ -22,7 +22,7 @@ public partial class DadJokesPage : ContentPage
         List<DadJoke> jokes = await dadJokesViewModel.GetJokesAsync(uri);
         if (jokes != null && jokes.Count > 0)
         {
-            Random random = new Random();
+            Random random = new();
             int index = random.Next(jokes.Count);
             string randomisedJoke = jokes[index].Joke;
 
@@ -36,12 +36,12 @@ public partial class DadJokesPage : ContentPage
             }
             catch (Exception)
             {
-                _alertDelegate("Error", "Skämtet gick inte att hämta, försök igen.");
+                _alertDelegate("Felmeddelande", "Skämtet gick inte att hämta, försök igen.");
             }
         }
         else
         {
-            _alertDelegate("Error", "Skämtet gick inte att hämta, försök igen.");
+            _alertDelegate("Felmeddelande", "Skämtet gick inte att hämta, försök igen.");
         }
 
     }

@@ -15,12 +15,10 @@ namespace PottyAppNew.ViewModels
     {
         private static IMongoCollection<Parent> ParentCollection;
         private static IMongoCollection<Child> ChildCollection;
-        private Delegates.MyDelegate _alertDelegate;
         public MainPageViewModel()
         {
             ParentCollection = DataAccessLayer.GetDbCollection<Parent>("ParentCollection").Result;
             ChildCollection = DataAccessLayer.GetDbCollection<Child>("ChildCollection").Result;
-            _alertDelegate = Delegates.DisplayAlerts;
         }
 
         [ObservableProperty]

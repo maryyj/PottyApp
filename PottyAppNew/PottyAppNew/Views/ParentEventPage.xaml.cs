@@ -6,12 +6,12 @@ public partial class ParentEventPage : ContentPage
 {
     //Frame på bilderna.
     readonly EventPageViewModel eventPageViewModel = new();
-    private Delegates.MyDelegate _myAlertDelegate;
+    private readonly Delegates.MyDelegate _alertDelegate;
     public ParentEventPage()
     {
         InitializeComponent();
         BindingContext = eventPageViewModel;
-        _myAlertDelegate = Delegates.DisplayAlerts;
+        _alertDelegate = Delegates.DisplayAlerts;
     }
     private async void OnClickedAddEventDescription(object sender, EventArgs e)
     {
@@ -28,9 +28,14 @@ public partial class ParentEventPage : ContentPage
         // Lägger till event i databasen, skickar med datum, beskrivning och ett Barn
         bool isSavedInDb = await eventPageViewModel.AddEventToDatabase(date, eventPageViewModel.EventDescription, App.Child);
 
-        if (isSavedInDb) _myAlertDelegate("Sparad", "Händelsen är sparad");
-        else _myAlertDelegate("Error", "Gick inte att spara händelse, försök igen.");
-
+        if (isSavedInDb)
+        {
+            _alertDelegate("Sparad", "Händelsen är sparad");
+        }
+        else
+        {
+            _alertDelegate("Felmeddelande", "Gick inte att spara händelse, försök igen.");
+        }
     }
     private async void OnClickedGoToStatisticPage(object sender, EventArgs e)
     {

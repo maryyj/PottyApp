@@ -44,8 +44,11 @@ namespace PottyAppNew.ViewModels
             var sort = Builders<Event>.Sort.Ascending(e => e.Date);
 
             var eventList = await EventCollection.Find(filter).Sort(sort).ToListAsync();
-            var viewModel = new StatisticPageViewModel();
-            viewModel.EventsList = new ObservableCollection<Event>(eventList);
+
+            StatisticPageViewModel viewModel = new()
+            {
+                EventsList = new ObservableCollection<Event>(eventList)
+            };
 
             return viewModel.EventsList;
         }
@@ -59,8 +62,10 @@ namespace PottyAppNew.ViewModels
             var sort = Builders<Event>.Sort.Ascending(e => e.Date);
 
             var eventList = await EventCollection.Find(filter).Sort(sort).ToListAsync();
-            var viewModel = new StatisticPageViewModel();
-            viewModel.EventsList = new ObservableCollection<Event>(eventList);
+            StatisticPageViewModel viewModel = new()
+            {
+                EventsList = new ObservableCollection<Event>(eventList)
+            };
 
             return viewModel.EventsList;
         }

@@ -15,17 +15,13 @@ namespace PottyAppNew.ViewModels
 {
     internal class DadJokesViewModel
     {
-        private static string baseAddress = "https://api.api-ninjas.com";
         private static readonly string apiKeyNinja = "API-KEY";
         private static readonly string apiKeyChatGPT = "API-KEY";
-
-
-
-
+        private readonly static string baseAddress = "https://api.api-ninjas.com";
 
         public async Task<List<DadJoke>> GetJokesAsync(string uri)
         {
-            HttpClient client = new HttpClient();
+            HttpClient client = new();
             List<DadJoke> jokes = null;
             client.BaseAddress = new Uri(baseAddress);
             client.DefaultRequestHeaders.Add("X-Api-Key", apiKeyNinja);
@@ -49,14 +45,14 @@ namespace PottyAppNew.ViewModels
         {
             string answer = "Inget svar";
 
-            CompletionRequest request = new CompletionRequest()  //skapat completionrequest objekt som skickas till chatGPT
+            CompletionRequest request = new()  //skapat completionrequest objekt som skickas till chatGPT
             {
                 Model = "text-davinci-003",
                 Prompt = "Översätt engelska skämtet till svenska: " + question,
                 MaxTokens = 120
             };
 
-            HttpClient client = new HttpClient();
+            HttpClient client = new();
             var httpReq = new HttpRequestMessage(HttpMethod.Post, "https://api.openai.com/v1/completions");
 
             httpReq.Headers.Add("Authorization", "Bearer " + apiKeyChatGPT);

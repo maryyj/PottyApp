@@ -9,15 +9,15 @@ namespace PottyAppNew.Views;
 
 public partial class ChildEventPage : ContentPage
 {
-    private Delegates.MyDelegate _alertDelegate;
+    private readonly Delegates.MyDelegate _alertDelegate;
     private readonly IAudioManager _audioManager; //Inbyggd Interface i audiomanager
-    EventPageViewModel eventPageViewModel = new EventPageViewModel();
+    readonly EventPageViewModel eventPageViewModel = new();
     public ChildEventPage()
     {
         InitializeComponent();
         BindingContext = eventPageViewModel;
         _alertDelegate = Delegates.DisplayAlerts;
-        this._audioManager = new AudioManager(); //Gör att man kan använda audiomanager utanför konstruktor.
+        _audioManager = new AudioManager(); //Gör att man kan använda audiomanager utanför konstruktor.
     }
     protected override void OnAppearing()
     {
@@ -33,15 +33,14 @@ public partial class ChildEventPage : ContentPage
                 //Skapar en bild för varje poäng barnet har, och lägger till det i stackLayouten.
                 for (int i = 0; i < App.Child.Points; i++)
                 {
-                    Image pointImage = new Image();
-                    pointImage.Source = "star.png";
-                    stackLayout.Children.Add(pointImage);
+                    Image pointImage = new() { Source = "star.png" };
+                    stackLayout.Children.Add(pointImage);                   
                 }
             }
         }
         else
         {
-            _alertDelegate("Error", "Lägg till ett barn först.");
+            _alertDelegate("Felmeddelande", "Lägg till ett barn först.");
         }
     }
     private async void OnClickedAddEventDescription(object sender, EventArgs e)
@@ -64,10 +63,10 @@ public partial class ChildEventPage : ContentPage
         if (isSavedInDb)
         {
             //lägger till en stjärna direkt på sidan.
-            Image pointImage = new Image();
-            pointImage.Source = "star.png";
+            Image pointImage = new() { Source = "star.png" };
             stackLayout.Children.Add(pointImage);
 
+            //spelar upp prutt ljud
             var player = _audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("fart.mp3"));
             player.Play();
 
@@ -75,7 +74,7 @@ public partial class ChildEventPage : ContentPage
         }
         else
         {
-            _alertDelegate("Error", "Gick inte att spara händelse, försök igen.");
+            _alertDelegate("Felmeddelande", "Gick inte att spara händelse, försök igen.");
         }
     }
     private async void OnClickedGoToStatisticPage(object sender, EventArgs e)
