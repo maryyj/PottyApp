@@ -18,7 +18,9 @@ namespace PottyAppNew.ViewModels
         private static string baseAddress = "https://api.api-ninjas.com";
         private static readonly string apiKeyNinja = "API-KEY";
         private static readonly string apiKeyChatGPT = "API-KEY";
-        
+
+
+
 
 
         public async Task<List<DadJoke>> GetJokesAsync(string uri)

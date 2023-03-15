@@ -20,9 +20,8 @@ namespace PottyAppNew.ViewModels
         private Delegates.MyDelegate _alertDelegate;
         private Delegates.MyDelegateBool _regexDelegate;
         private Delegates.MyDelegateCollection<Child> _saveDelegate;
+        public ObservableCollection<Child> ChildList { get; set; }
 
-        [ObservableProperty]
-        ObservableCollection<Child> children;
         [ObservableProperty]
         ObjectId id;
         [ObservableProperty]
@@ -39,17 +38,17 @@ namespace PottyAppNew.ViewModels
             _saveDelegate = Delegates.SaveToDatabase;
             _alertDelegate = Delegates.DisplayAlerts;
             _regexDelegate = Delegates.RegexValidator;
-            Children = new ObservableCollection<Child>();
+            ChildList = new ObservableCollection<Child>();
             ChildCollection = DataAccessLayer.GetDbCollection<Child>("ChildCollection").Result;
         }
 
         [RelayCommand]
-        public async void DeleteChild(object c)
+        private async void DeleteChild(object c)
         {
             //tar bort en produkt i databasen
             var child = (Child)c;
             await ChildCollection.DeleteOneAsync(x => x.Id == child.Id);
-            Children.Remove(child);
+            ChildList.Remove(child);
         }
         public async Task<bool> AddChildToDatabase()
         {
@@ -70,18 +69,17 @@ namespace PottyAppNew.ViewModels
 
                 await _saveDelegate(ChildCollection, newChild);
                 App.Child = newChild;
-                Children.Add(newChild);
+                ChildList.Add(newChild);
                 return true;
             }
             else
             {
-                _alertDelegate("Error", "Fel inmatning. Ditt barn sparades inte, försök igen.");
                 return false;
             }
         }
-        internal async void GetChildren()
+        public async void GetChildren()
         {
-            Children = new ObservableCollection<Child>(await ChildCollection
+            ChildList = new ObservableCollection<Child>(await ChildCollection
                        .Find(c => c.ParentId == App.LoggedInParent.Id)
                        .ToListAsync());
         }

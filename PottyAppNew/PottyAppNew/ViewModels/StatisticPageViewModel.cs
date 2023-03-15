@@ -20,9 +20,7 @@ namespace PottyAppNew.ViewModels
         //TODO: Visa barnets poäng
 
         private static IMongoCollection<Event> EventCollection;
-
-        [ObservableProperty]
-        ObservableCollection<Event> events;
+        public ObservableCollection<Event> EventsList { get; set; }
 
         [ObservableProperty]
         DateTime date;
@@ -32,7 +30,7 @@ namespace PottyAppNew.ViewModels
 
         public StatisticPageViewModel()
         {
-            Events = new ObservableCollection<Event>();
+            EventsList = new ObservableCollection<Event>();
             EventCollection = DataAccessLayer.GetDbCollection<Event>("EventCollection").Result;
         }
 
@@ -47,9 +45,9 @@ namespace PottyAppNew.ViewModels
 
             var eventList = await EventCollection.Find(filter).Sort(sort).ToListAsync();
             var viewModel = new StatisticPageViewModel();
-            viewModel.Events = new ObservableCollection<Event>(eventList);
+            viewModel.EventsList = new ObservableCollection<Event>(eventList);
 
-            return viewModel.Events;
+            return viewModel.EventsList;
         }
         public async static Task<ObservableCollection<Event>> GetStatisticTwoEvent(Child child, string description1, string description2)
         {
@@ -62,9 +60,9 @@ namespace PottyAppNew.ViewModels
 
             var eventList = await EventCollection.Find(filter).Sort(sort).ToListAsync();
             var viewModel = new StatisticPageViewModel();
-            viewModel.Events = new ObservableCollection<Event>(eventList);
+            viewModel.EventsList = new ObservableCollection<Event>(eventList);
 
-            return viewModel.Events;
+            return viewModel.EventsList;
         }
     }
 }

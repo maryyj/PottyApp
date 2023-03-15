@@ -21,6 +21,8 @@ namespace PottyAppNew.ViewModels
         private Delegates.MyDelegateCollection<Event> _saveDelegate;
 
         [ObservableProperty]
+        int points;
+        [ObservableProperty]
         DateTime date;
         [ObservableProperty]
         string eventDescription;

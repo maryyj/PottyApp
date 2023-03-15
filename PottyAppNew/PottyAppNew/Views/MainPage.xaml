@@ -11,10 +11,10 @@
     Spacing="25"
     Padding="30,0"
     VerticalOptions="Center">
-        <Button
+        <!--<Button
             Text="Startsidan utan att logga in"
             Clicked="OnClickedGoDirectlyToHomePage"
-            BackgroundColor="SlateGray"/>
+            BackgroundColor="SlateGray"/>-->
         <Image Source="winniepotty.png" 
                HeightRequest="150" 
                WidthRequest="150"/>
@@ -40,7 +40,7 @@
             </Frame>
             <Frame HeightRequest="45" Margin="20,0,0,0" Padding="0" HasShadow="True" BorderColor="FloralWhite" HorizontalOptions="FillAndExpand">
                 <Entry 
-                    x:Name ="emailAddress"                    
+                    x:Name ="emailEntry"                    
                     Margin="20,0,0,0"
                     VerticalOptions="Center" 
                     Placeholder="Emailadress" 
@@ -56,7 +56,7 @@
                        WidthRequest="20"/>
             </Frame>
             <Frame HeightRequest="45" Margin="20,0,0,0" Padding="0" HasShadow="True" BorderColor="FloralWhite" HorizontalOptions="FillAndExpand">
-                <Entry x:Name="password" 
+                <Entry x:Name="passwordEntry" 
                        Margin="20,0,0,0" 
                        VerticalOptions="Center" 
                        Placeholder="Lösenord" 

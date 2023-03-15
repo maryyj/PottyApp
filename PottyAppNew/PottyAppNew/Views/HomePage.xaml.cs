@@ -15,4 +15,11 @@ public partial class HomePage : ContentPage
     {
         await Navigation.PushAsync(new ParentPage());
     }
+
+    private async void OnLogOutClicked(object sender, EventArgs e)
+    {
+        App.LoggedInParent = null;
+        App.Child = null;
+        await Navigation.PopAsync();
+    }
 }

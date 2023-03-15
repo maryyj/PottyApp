@@ -41,7 +41,7 @@
             <HorizontalStackLayout>
                 <ListView
                     x:Name="listOfStatisticPotty"
-                    ItemsSource="{Binding Events}">
+                    ItemsSource="{Binding EventsList}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -55,7 +55,7 @@
                 </ListView>
                 <ListView
                     x:Name="listOfStatisticAccident"
-                    ItemsSource="{Binding Events}">
+                    ItemsSource="{Binding EventsList}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -69,7 +69,7 @@
                 </ListView>
                 <ListView
                     x:Name="listOfStatisticDryDiaper"
-                    ItemsSource="{Binding Events}">
+                    ItemsSource="{Binding EventsList}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

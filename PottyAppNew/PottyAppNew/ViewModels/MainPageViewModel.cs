@@ -15,12 +15,12 @@ namespace PottyAppNew.ViewModels
     {
         private static IMongoCollection<Parent> ParentCollection;
         private static IMongoCollection<Child> ChildCollection;
-        private Delegates.MyDelegate _myAlertDelegate;
+        private Delegates.MyDelegate _alertDelegate;
         public MainPageViewModel()
         {
             ParentCollection = DataAccessLayer.GetDbCollection<Parent>("ParentCollection").Result;
             ChildCollection = DataAccessLayer.GetDbCollection<Child>("ChildCollection").Result;
-            _myAlertDelegate = Delegates.DisplayAlerts;
+            _alertDelegate = Delegates.DisplayAlerts;
         }
 
         [ObservableProperty]
@@ -34,12 +34,12 @@ namespace PottyAppNew.ViewModels
             //filtrerar och kollar om användarens email existerar
             var filter = Builders<Parent>.Filter.Eq(p => p.Email, Email);
             var parent = await ParentCollection.Find(filter).FirstOrDefaultAsync();
-            //filtrerar och kollar att barnets parentid är den samma som dne inloggade användaren
-            var childFilter = Builders<Child>.Filter.Eq(c => c.ParentId, parent.Id);
-            var child = await ChildCollection.Find(childFilter).FirstOrDefaultAsync();
-
             if (parent != null && parent.Password == Password)
             {
+                //filtrerar och kollar att barnets parentid är den samma som dne inloggade användaren
+                var childFilter = Builders<Child>.Filter.Eq(c => c.ParentId, parent.Id);
+                var child = await ChildCollection.Find(childFilter).FirstOrDefaultAsync();
+
                 // Användaren finns och lösenordet är korrekt
                 //Sätter parent i loggedInParent
                 App.LoggedInParent = parent;
@@ -49,10 +49,10 @@ namespace PottyAppNew.ViewModels
             }
             else
             {
-                // Användaren finns inte eller lösenordet är inkorrekt
-                _myAlertDelegate("Error", "Emailadressen existerar inte / lösenordet är inkorrekt");
+                // Användaren finns inte eller lösenordet är inkorrekt returnera falskt
                 return false;
             }
+
         }
-    }
+}
 }

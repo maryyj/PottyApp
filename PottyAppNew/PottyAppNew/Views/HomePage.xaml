@@ -35,6 +35,13 @@
                         HeightRequest="330"
                         HorizontalOptions="Center"/>
                 </Grid>
+                <Button
+                    Text="Logga ut"
+                    Clicked="OnLogOutClicked"
+                    BackgroundColor="SlateGrey"
+                    HeightRequest="25"
+                    HorizontalOptions="End"
+                    VerticalOptions="End"/>
             </VerticalStackLayout>
         </StackLayout>
     </ScrollView>
