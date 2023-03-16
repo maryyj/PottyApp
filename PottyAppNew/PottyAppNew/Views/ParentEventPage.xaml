@@ -91,7 +91,8 @@
                 <HorizontalStackLayout
                 Grid.Row="12"
                 Grid.Column="2"
-                VerticalOptions="End">
+                VerticalOptions="End"
+                    HorizontalOptions="Center">
                     <Button
                     Text="Statistik"
                     Clicked="OnClickedGoToStatisticPage"

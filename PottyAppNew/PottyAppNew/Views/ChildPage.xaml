@@ -10,7 +10,7 @@
             ColumnDefinitions="*,*,*">
             <Button 
                 Grid.Column="3"
-                Text="Lägg till ett barn"
+                Text="Lägg till barn"
                 Clicked="OnClickedGoToAddChildPage"
                 BackgroundColor="SlateGrey"/>
         </Grid>

@@ -6,18 +6,219 @@
              Title="Spel"
              Shell.BackgroundColor="SlateGray"
              BackgroundColor="FloralWhite">
-    <VerticalStackLayout>
-        <Label
-               Grid.Row="1"
-               Text="Snart kommer ett coolt spel..."
-               TextColor="SlateGrey"
-               FontSize="20"
-               FontAttributes="Bold"
-               HorizontalOptions="Center"/>
-        <Button
-                Grid.Row="3"
-               Text="Tillbaka"
-                Clicked="OnBackClicked"
-                BackgroundColor="SlateGray"/>
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout>
+            <HorizontalStackLayout
+            HorizontalOptions="Center">
+                <Image
+                Source="spainflag.png"
+                HeightRequest="20"/>
+                <Label 
+            Text="Öva på spanska"
+            FontSize="Title"
+            FontAttributes="Bold"
+            TextColor="SlateGray"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            Padding="10"/>
+            </HorizontalStackLayout>
+
+            <Grid
+            RowDefinitions="50,*,10,*,50,*,*,50,*,*,50,*,*,50,*,10,*,*"
+            ColumnDefinitions="*,*,*,*,*">
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Bajs" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Source="poo.png"
+                        x:Name="pooImg"
+                        HeightRequest="120">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="1" Grid.Column="2" Text="Kiss" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Source="peeemoji.png"
+                        x:Name="peeImg"
+                        HeightRequest="100">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="1" Grid.Column="4" Text="Toalett" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="3"
+                        Grid.Column="4"
+                        Source="toilet.png"
+                        x:Name="toiletImg"
+                        HeightRequest="100">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="5" Grid.Column="0" Text="Tandborste" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        Source="toothbrush.png"
+                        x:Name="toothBrushImg"
+                        HeightRequest="100">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="5" Grid.Column="2" Text="Tandkräm" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="6"
+                        Grid.Column="2"
+                        Source="toothpaste.png"
+                        x:Name="toothpasteImg"
+                        HeightRequest="100">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="5" Grid.Column="4" Text="Dusch" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="6"
+                        Grid.Column="4"
+                        Source="shower.png"
+                        x:Name="showerImg"
+                        HeightRequest="90">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="8" Grid.Column="0" Text="Jordgubbe" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="9"
+                        Grid.Column="0"
+                        Source="strawberry.png"
+                        x:Name="strawberryImg"
+                        HeightRequest="90">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="8" Grid.Column="2" Text="Äpple" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="9"
+                        Grid.Column="2"
+                        Source="apple.png"
+                        x:Name="appleImg"
+                        HeightRequest="100">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="8" Grid.Column="4" Text="Glass" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="9"
+                        Grid.Column="4"
+                        Source="icecream.png"
+                        x:Name="icecreamImg"
+                        HeightRequest="90">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="11" Grid.Column="0" Text="Katt" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="12"
+                        Grid.Column="0"
+                        Source="cat.png"
+                        x:Name="catImg"
+                        HeightRequest="80">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="11" Grid.Column="2" Text="Hund" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="12"
+                        Grid.Column="2"
+                        Source="dog.png"
+                        x:Name="dogImg"
+                        HeightRequest="80">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="11" Grid.Column="4" Text="Häst" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="12"
+                        Grid.Column="4"
+                        Source="horse.png"
+                        x:Name="horseImg"
+                        HeightRequest="80">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="14" Grid.Column="0" Text="Bil" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="15"
+                        Grid.Column="0"
+                        Source="car.png"
+                        x:Name="carImg"
+                        HeightRequest="80">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="14" Grid.Column="2" Text="Tåg" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="15"
+                        Grid.Column="2"
+                        Source="train.png"
+                        x:Name="trainImg"
+                        HeightRequest="80">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="14" Grid.Column="4" Text="Buss" HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"/>
+                <Image
+                        Grid.Row="15"
+                        Grid.Column="4"
+                        Source="bus.png"
+                        x:Name="busImg"
+                        HeightRequest="80">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickedPlaySound"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <HorizontalStackLayout
+                        Grid.Row="17"
+                        Grid.Column="2"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center">
+
+                    <Button
+                        Text="Tillbaka"
+                        Clicked="OnBackClicked"
+                        BackgroundColor="SlateGray"/>
+                </HorizontalStackLayout>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

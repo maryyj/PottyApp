@@ -10,7 +10,7 @@
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
-
+		
 		<!-- Display name -->
 		<ApplicationTitle>PottyAppNew</ApplicationTitle>
 
@@ -49,19 +49,49 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\accidentsign.png" />
+	  <None Remove="Resources\Images\apple.png" />
+	  <None Remove="Resources\Images\bus.png" />
+	  <None Remove="Resources\Images\car.png" />
+	  <None Remove="Resources\Images\cat.png" />
 	  <None Remove="Resources\Images\childonpotty.jpg" />
+	  <None Remove="Resources\Images\dog.png" />
 	  <None Remove="Resources\Images\drink.png" />
 	  <None Remove="Resources\Images\hamburger.png" />
 	  <None Remove="Resources\Images\heartlock.png" />
+	  <None Remove="Resources\Images\horse.png" />
+	  <None Remove="Resources\Images\icecream.png" />
 	  <None Remove="Resources\Images\manlaughing.png" />
+	  <None Remove="Resources\Images\milk.png" />
 	  <None Remove="Resources\Images\moonstar.png" />
 	  <None Remove="Resources\Images\peeemoji.png" />
 	  <None Remove="Resources\Images\poo.png" />
 	  <None Remove="Resources\Images\pooandpee.png" />
+	  <None Remove="Resources\Images\shower.png" />
+	  <None Remove="Resources\Images\spainFlag.png" />
 	  <None Remove="Resources\Images\star.png" />
+	  <None Remove="Resources\Images\strawberry.png" />
+	  <None Remove="Resources\Images\toilet.png" />
+	  <None Remove="Resources\Images\toothbrush.png" />
+	  <None Remove="Resources\Images\toothpaste.png" />
+	  <None Remove="Resources\Images\train.png" />
 	  <None Remove="Resources\Images\user.jpg" />
 	  <None Remove="Resources\Images\winniepotty.png" />
+	  <None Remove="Resources\Raw\autobus.mp3" />
+	  <None Remove="Resources\Raw\caballo.mp3" />
+	  <None Remove="Resources\Raw\caca.mp3" />
+	  <None Remove="Resources\Raw\cepillo_de_dientes.mp3" />
+	  <None Remove="Resources\Raw\coche.mp3" />
+	  <None Remove="Resources\Raw\ducha.mp3" />
 	  <None Remove="Resources\Raw\fart.mp3" />
+	  <None Remove="Resources\Raw\fresa.mp3" />
+	  <None Remove="Resources\Raw\gato.mp3" />
+	  <None Remove="Resources\Raw\helado.mp3" />
+	  <None Remove="Resources\Raw\indoro.mp3" />
+	  <None Remove="Resources\Raw\manzana.mp3" />
+	  <None Remove="Resources\Raw\orina.mp3" />
+	  <None Remove="Resources\Raw\pasta_de_diente.mp3" />
+	  <None Remove="Resources\Raw\perro.mp3" />
+	  <None Remove="Resources\Raw\tren.mp3" />
 	</ItemGroup>
 
 	<ItemGroup>

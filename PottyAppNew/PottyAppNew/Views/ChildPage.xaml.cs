@@ -43,7 +43,7 @@ public partial class ChildPage : ContentPage
         }
         else
         {
-            _alertDelegate("Felmeddelande", "Du måste vara inloggad/lägga till ett barn för att kunna lägga till en händelse.");
+            _alertDelegate("Felmeddelande", "Du måste lägga till ett barn för att kunna lägga till en händelse.");
         }
 
     }

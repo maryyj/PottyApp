@@ -47,10 +47,14 @@ namespace PottyAppNew.ViewModels
             var child = (Child)c;
             await ChildCollection.DeleteOneAsync(x => x.Id == child.Id);
             ChildList.Remove(child);
+            if(ChildList.Count == 0)
+            {
+                App.Child = null;
+            }
         }
         public async Task<bool> AddChildToDatabase()
         {
-            if (Name != null && Age != null)
+            if (Name != null)
             {
                 bool nameIsValid = _regexDelegate(@"\b[A-ZÅÄÖ][a-zåäö]+", Name);
                 bool ageIsValid = _regexDelegate(@"(^[0-5]{1}$)", Age.ToString());
