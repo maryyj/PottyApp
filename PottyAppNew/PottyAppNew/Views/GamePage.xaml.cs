@@ -4,11 +4,11 @@ namespace PottyAppNew.Views;
 
 public partial class GamePage : ContentPage
 {
-    private readonly IAudioManager _audioManager; //Inbyggd Interface i audiomanager
+    private readonly IAudioManager _audioManager = new AudioManager(); //Inbyggd Interface i audiomanager
     public GamePage()
     {
         InitializeComponent();
-        _audioManager = new AudioManager();
+        //_audioManager = new AudioManager();
     }
     private async void OnBackClicked(object sender, EventArgs e)
     {

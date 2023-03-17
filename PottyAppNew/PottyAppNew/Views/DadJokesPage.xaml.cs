@@ -6,7 +6,6 @@ namespace PottyAppNew.Views;
 
 public partial class DadJokesPage : ContentPage
 {
-    //TODO: Översätt joke till svenska med hjälp av chat gpt api.
     readonly DadJokesViewModel dadJokesViewModel = new();
     private readonly Delegates.MyDelegate _alertDelegate;
     public DadJokesPage()
@@ -19,7 +18,7 @@ public partial class DadJokesPage : ContentPage
     private async void OnClickedGetDadJoke(object sender, EventArgs e)
     {
         string uri = "/v1/dadjokes?limit=10";
-        List<DadJoke> jokes = await dadJokesViewModel.GetJokesAsync(uri);
+        List<DadJoke> jokes = await DadJokesViewModel.GetJokesAsync(uri);
         if (jokes != null && jokes.Count > 0)
         {
             Random random = new();
@@ -28,7 +27,7 @@ public partial class DadJokesPage : ContentPage
 
             try
             {
-                string translatedText = await dadJokesViewModel.ChatTranslate(jokes[index].Joke);
+                string translatedText = await DadJokesViewModel.ChatTranslate(jokes[index].Joke);
                 textSwe.Text = "Svenska:";
                 dadJokeSwe.Text = translatedText;
                 textEng.Text = "Makes no sense? Engelska originalversionen:";

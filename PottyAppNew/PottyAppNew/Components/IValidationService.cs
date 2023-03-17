@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PottyAppNew.Components
 {
-    interface IValidation
+    interface IValidationService
     {
         bool validateFirstName(string firstNeme);
         bool validateLastName(string lastName);

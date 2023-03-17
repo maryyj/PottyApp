@@ -12,7 +12,7 @@ namespace PottyAppNew.ViewModels
     internal class VideoPageViewModel
     {
         //Skickar med MediaElement och ett videoId 
-        public async Task GetVideoAsync(MediaElement mediaElement, string videoId)
+        public static async Task GetVideoAsync(MediaElement mediaElement, string videoId)
         {
             var youtube = new YoutubeClient();
             try //try/catch om videon skulle vara borttagen från youtube

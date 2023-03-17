@@ -5,6 +5,7 @@
              Title="Barn"
              Shell.BackgroundColor="SlateGrey"
              BackgroundColor="FloralWhite">
+    <ScrollView>
     <VerticalStackLayout>
         <Grid
             ColumnDefinitions="*,*,*">
@@ -37,4 +38,5 @@
             Clicked="OnBackCLicked"
             BackgroundColor="SlateGrey"/>
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

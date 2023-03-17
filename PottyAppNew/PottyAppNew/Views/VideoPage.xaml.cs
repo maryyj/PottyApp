@@ -5,7 +5,6 @@ namespace PottyAppNew.Views;
 
 public partial class VideoPage : ContentPage
 {
-    readonly VideoPageViewModel viewModel = new();
     private readonly Delegates.MyDelegate _alertDelegate;
     public VideoPage()
     {
@@ -25,11 +24,11 @@ public partial class VideoPage : ContentPage
         {
 
             MySongText.Text = "Sånger";
-            await viewModel.GetVideoAsync(mediaElement1, videoId1);
-            await viewModel.GetVideoAsync(mediaElement2, videoId2);
-            await viewModel.GetVideoAsync(mediaElement3, videoId3);
+            await VideoPageViewModel.GetVideoAsync(mediaElement1, videoId1);
+            await VideoPageViewModel.GetVideoAsync(mediaElement2, videoId2);
+            await VideoPageViewModel.GetVideoAsync(mediaElement3, videoId3);
             MyMovieText.Text = "Korta Filmer";
-            await viewModel.GetVideoAsync(mediaElement4, videoId4);
+            await VideoPageViewModel.GetVideoAsync(mediaElement4, videoId4);
         }
         catch
         {

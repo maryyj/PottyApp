@@ -8,18 +8,18 @@ using PottyAppNew.Models;
 using System.Text.Json;
 using MongoDB.Bson;
 using Newtonsoft.Json;
-using PottyAppNew.Helpers;
 using static PottyAppNew.Models.ChatGptApi;
 
 namespace PottyAppNew.ViewModels
 {
     internal class DadJokesViewModel
     {
+ 
         private static readonly string apiKeyNinja = "API-KEY";
         private static readonly string apiKeyChatGPT = "API-KEY";
         private readonly static string baseAddress = "https://api.api-ninjas.com";
 
-        public async Task<List<DadJoke>> GetJokesAsync(string uri)
+        public static async Task<List<DadJoke>> GetJokesAsync(string uri)
         {
             HttpClient client = new();
             List<DadJoke> jokes = null;
@@ -41,7 +41,7 @@ namespace PottyAppNew.ViewModels
             }
 
         }
-        public async Task<string> ChatTranslate(string question)
+        public static async Task<string> ChatTranslate(string question)
         {
             string answer = "Inget svar";
 

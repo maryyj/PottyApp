@@ -4,6 +4,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using PottyAppNew.Helpers;
 using PottyAppNew.Models;
+using PottyAppNew.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,7 +14,6 @@ using System.Threading.Tasks;
 
 namespace PottyAppNew.ViewModels
 {
-    //TODO: Möjlighet att ha flera barn.
     public partial class AddChildPageViewModel : ObservableObject
     {
         private static IMongoCollection<Child> ChildCollection;
@@ -47,43 +47,54 @@ namespace PottyAppNew.ViewModels
             var child = (Child)c;
             await ChildCollection.DeleteOneAsync(x => x.Id == child.Id);
             ChildList.Remove(child);
-            if(ChildList.Count == 0)
+            if (ChildList.Count == 0)
             {
                 App.Child = null;
             }
         }
         public async Task<bool> AddChildToDatabase()
         {
+            Child newChild = ValidateAndCreateChild();
+
+            if (newChild != null)
+            {
+                await _saveDelegate(ChildCollection, newChild);
+                App.Child = newChild;
+                ChildList.Add(newChild);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public Child ValidateAndCreateChild()
+        {
             if (Name != null)
             {
                 bool nameIsValid = _regexDelegate(@"\b[A-ZÅÄÖ][a-zåäö]+", Name);
                 bool ageIsValid = _regexDelegate(@"(^[0-5]{1}$)", Age.ToString());
 
-
-                if (nameIsValid && ageIsValid)
+                //Om valideringen är falsk, returnera null annars en child objekt
+                if (!nameIsValid || !ageIsValid)
                 {
-                    Child newChild = new()
-                    {
-                        Id = ObjectId.GenerateNewId(),
-                        Name = Name,
-                        Age = Convert.ToInt32(Age),
-                        Points = 0,
-                        ParentId = App.LoggedInParent.Id
-                    };
-
-                    await _saveDelegate(ChildCollection, newChild);
-                    App.Child = newChild;
-                    ChildList.Add(newChild);
-                    return true;
+                    return null;
                 }
                 else
                 {
-                    return false;
+                    return new Child
+                    {
+                        Id = ObjectId.GenerateNewId(),
+                        Name = Name,
+                        Age = Age,
+                        Points = 0,
+                        ParentId = App.LoggedInParent.Id
+                    };
                 }
             }
             else
-            {
-                return false;
+            { 
+                return null;
             }
         }
         public async void GetChildren()

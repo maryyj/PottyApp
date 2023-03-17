@@ -11,11 +11,11 @@ namespace PottyAppNew.ApplicationFacade
 {
     class SignUpFacade : ISignUpFacade
     {
-        private static readonly IValidation _validation = new Validation();
+        private static readonly IValidationService _validation = new ValidationService();
 
         public Parent ValidateAndCreateParent(string firstName, string lastName, string phoneNumber, string email, string password1, string password2)
         {
-            //Om valideringen är falsk, returnera null annars en parent objekt
+            //Om valideringen är falsk returnera null annars en parent objekt
             if (!_validation.validateFirstName(firstName) || !_validation.validateLastName(lastName) || !_validation.validatePhone(phoneNumber) || !_validation.validateEmail(email) || !_validation.validatePassword(password1, password2))
             {
                 return null;

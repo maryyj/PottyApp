@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PottyAppNew.Components
 {
-    internal class Validation : IValidation
+    internal class ValidationService : IValidationService
     {
         public bool validateFirstName(string firstName)
         {
